@@ -1,0 +1,17 @@
+{
+  "name": "park-well",
+  "version": "1.0.0",
+  "description": "api implementation for a car parking management app",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": "https://github.com/KaiserPhemi/park-well.git",
+  "author": "KaiserPhemi <oluwafemi.akinwa@andela.com>",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^8.0.0",
+    "express": "^4.17.0",
+    "nodemon": "^1.19.0"
+  }
+}
