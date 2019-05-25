@@ -4,7 +4,8 @@
   "description": "api implementation for a car parking management app",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "migrate": "sequelize db:migrate"
   },
   "repository": "https://github.com/KaiserPhemi/park-well.git",
   "author": "KaiserPhemi <oluwafemi.akinwa@andela.com>",
