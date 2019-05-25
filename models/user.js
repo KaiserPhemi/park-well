@@ -7,25 +7,29 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
+        length: 50,
         validate: { notEmpty: true }
       },
       lastName: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
+        length: 50,
         validate: { notEmpty: true }
       },
       department: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
+        length: 50,
         validate: { notEmpty: true }
       },
       phoneNumber: {
         type: DataTypes.CHAR,
         allowNull: false,
         unique: true,
-        validate: { notEmpty: true }
+        length: 15,
+        validate: { notEmpty: true, isNumeric: true }
       },
       email: {
         type: DataTypes.STRING,
@@ -38,7 +42,6 @@ module.exports = (sequelize, DataTypes) => {
       password: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
         validate: { notEmpty: true }
       },
       roleId: {

@@ -9,9 +9,13 @@ module.exports = {
         defaultValue: Sequelize.UUIDV4
       },
       title: {
+        allowNull: false,
+        unique: true,
         type: Sequelize.STRING
       },
       description: {
+        allowNull: false,
+        unique: true,
         type: Sequelize.STRING
       },
       createdAt: {

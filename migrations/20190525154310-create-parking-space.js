@@ -10,9 +10,13 @@ module.exports = {
       },
       title: {
         allowNull: false,
+        length: 20,
+        unique: true,
         type: Sequelize.STRING
       },
       description: {
+        allowNull: false,
+        length: 100,
         type: Sequelize.STRING
       },
       vacant: {

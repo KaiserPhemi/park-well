@@ -10,18 +10,23 @@ module.exports = {
       },
       regNo: {
         allowNull: false,
+        unique: true,
+        length: 12,
         type: Sequelize.STRING
       },
       brand: {
         allowNull: false,
+        length: 30,
         type: Sequelize.STRING
       },
       model: {
         allowNull: false,
+        length: 30,
         type: Sequelize.STRING
       },
       color: {
         allowNull: false,
+        length: 20,
         type: Sequelize.STRING
       },
       parked: {

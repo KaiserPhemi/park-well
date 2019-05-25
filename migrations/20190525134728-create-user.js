@@ -10,20 +10,27 @@ module.exports = {
       },
       firstName: {
         allowNull: false,
-        type: Sequelize.STRING
+        length: 50,
+        type: Sequelize.STRING,
+        validate: { notEmpty: true }
       },
       lastName: {
         allowNull: false,
-        type: Sequelize.STRING
+        length: 50,
+        type: Sequelize.STRING,
+        validate: { notEmpty: true }
       },
       department: {
         allowNull: false,
-        type: Sequelize.STRING
+        length: 50,
+        type: Sequelize.STRING,
+        validate: { notEmpty: true }
       },
       phoneNumber: {
         allowNull: false,
         length: 15,
-        type: Sequelize.CHAR
+        type: Sequelize.CHAR,
+        validate: { notEmpty: true, isNumeric: true }
       },
       email: {
         allowNull: false,
@@ -35,7 +42,8 @@ module.exports = {
       },
       password: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        validate: { notEmpty: true }
       },
       roleId: {
         type: Sequelize.UUID,

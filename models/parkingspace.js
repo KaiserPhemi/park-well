@@ -23,12 +23,18 @@ module.exports = (sequelize, DataTypes) => {
       carRegNo: {
         allowNull: false,
         type: DataTypes.STRING,
+        length: 12,
         unique: true,
         validate: { notEmpty: true }
       }
     },
     {}
   );
-  ParkingSpace.associate = models => {};
+  ParkingSpace.associate = models => {
+    ParkingSpace.belongsTo(models.Cars, {
+      foreignKey: "regNo",
+      onDelete: "SET NULL"
+    });
+  };
   return ParkingSpace;
 };
