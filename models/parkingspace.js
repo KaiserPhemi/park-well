@@ -1,6 +1,6 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
-  var ParkingSpace = sequelize.define(
+  const ParkingSpace = sequelize.define(
     "ParkingSpace",
     {
       title: {
