@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "oluwafemiakinwa",
+    "password": "",
+    "database": "park_well_dev",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "operatorsAliases": false
+  },
+  "test": {
+    "username": "oluwafemiakinwa",
+    "password": "",
+    "database": "park_well_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "operatorsAliases": false
+  },
+  "production": {
+    "username": "oluwafemiakinwa",
+    "password": "",
+    "database": "park_well",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "operatorsAliases": false
+  }
+}
