@@ -46,7 +46,7 @@ module.exports = {
         validate: { notEmpty: true }
       },
       roleId: {
-        type: Sequelize.UUID,
+        type: Sequelize.INTEGER,
         onDelete: "SET NULL",
         references: {
           model: "Roles",

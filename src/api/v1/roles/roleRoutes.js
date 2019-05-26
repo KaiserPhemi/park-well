@@ -8,6 +8,9 @@ const roleController = require("./roleController");
 const roleRouter = express.Router();
 
 // routes
-roleRouter.route("/").get(roleController.getAllRoles);
+roleRouter
+  .route("/")
+  .get(roleController.getAllRoles)
+  .post(roleController.createRole);
 
 module.exports = roleRouter;
