@@ -1,11 +1,11 @@
 // third-party libraries
 const express = require("express");
 
-// controller
-const roleController = require("./roleController");
-
 // router
 const roleRouter = express.Router();
+
+// controller
+const roleController = require("./roleController");
 
 // routes
 roleRouter
