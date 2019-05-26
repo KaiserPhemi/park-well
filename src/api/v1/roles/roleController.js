@@ -15,13 +15,13 @@ const roleController = {
   getAllRoles(req, res) {
     db.Role.findAll()
       .then(roles => {
-        res.status(200).send({
+        return res.status(200).send({
           message: "You have successfully retrieved all roles.",
           roles
         });
       })
       .catch(err => {
-        res.status(500).send({
+        return res.status(500).send({
           message: "An error has occurred",
           err
         });

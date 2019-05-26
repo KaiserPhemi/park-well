@@ -9,3 +9,5 @@ const userController = require("./userController");
 
 // routes
 userRouter.route("/").get(userController.getAllUsers);
+
+module.exports = userRouter;
