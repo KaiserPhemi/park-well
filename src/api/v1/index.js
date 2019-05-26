@@ -12,3 +12,5 @@ const appRouter = express.Router();
 // mount routes
 // appRouter.use("/users", usersRoutes);
 appRouter.use("/roles", roleRouter);
+
+module.exports = appRouter;

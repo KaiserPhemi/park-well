@@ -20,6 +20,8 @@
     "sequelize-cli": "^5.4.0"
   },
   "devDependencies": {
-    "mocha": "^6.1.4"
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "supertest": "^4.0.2"
   }
 }

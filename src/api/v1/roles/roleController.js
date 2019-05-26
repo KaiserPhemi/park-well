@@ -4,7 +4,9 @@ const db = require("../../../../models");
 // controllers
 const roleController = {
   getAllRoles(req, res) {
-    console.log("We got here");
+    res.send({
+      message: "route loaded"
+    });
   }
 };
 
