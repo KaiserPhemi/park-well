@@ -16,6 +16,7 @@ roleRouter
 roleRouter
   .route("/:id")
   .get(roleController.getRole)
-  .put()
-  .delete();
+  .put(roleController.updateRole)
+  .delete(roleController.deleteRole);
+
 module.exports = roleRouter;

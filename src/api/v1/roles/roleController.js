@@ -79,7 +79,43 @@ const roleController = {
    * @param {object} req
    * @param {object} res
    */
-  updateRole(req, res) {},
+  updateRole(req, res) {
+    const { id } = req.params;
+    const error = validateData.checkIdParams(id);
+    if (error.error) {
+      return res.status(400).send({
+        message: "Role id is required & must be an integer",
+        error
+      });
+    }
+    db.Role.findOne({ where: { id } }).then(role => {
+      if (!role) {
+        return res.status(404).send({
+          message: `Role with id: ${id} does not exist.`
+        });
+      }
+      const err = validateData.checkRoleData(req.body);
+      if (err.error) {
+        return res.status(400).send({
+          message: "An error has occurred.",
+          err
+        });
+      }
+      db.Role.update(req.body, { where: { id }, returning: true })
+        .then(updatedRole => {
+          return res.status(200).send({
+            message: "Role updated successfully.",
+            updatedRole
+          });
+        })
+        .catch(err => {
+          return res.status(500).send({
+            message: "An error has occured. Role was not updated.",
+            err
+          });
+        });
+    });
+  },
 
   /**
    * @author oluwafemi akinwa
@@ -100,7 +136,7 @@ const roleController = {
       .then(role => {
         if (!role) {
           return res.status(404).send({
-            message: `Role with id: ${id} does not exist on the system`
+            message: `Role with id: ${id} does not exist.`
           });
         }
         return res.status(200).send({
@@ -122,7 +158,36 @@ const roleController = {
    * @param {object} req
    * @param {object} res
    */
-  deleteRole(req, res) {}
+  deleteRole(req, res) {
+    const { id } = req.params;
+    const validationError = validateData.checkIdParams(id);
+    if (validationError.error) {
+      return res.status(400).send({
+        message: "Role id is required & must be an integer",
+        validationError
+      });
+    }
+    db.Role.findOne({ where: { id } })
+      .then(role => {
+        if (!role) {
+          return res.status(404).send({
+            message: `Role with id: ${id} does not exist.`
+          });
+        }
+        const deletedRole = role;
+        role.destroy();
+        return res.status(200).send({
+          message: "Role deleted successfully",
+          deletedRole
+        });
+      })
+      .catch(err => {
+        return res.status(500).send({
+          message: "An error has occured. Role not deleted.",
+          err
+        });
+      });
+  }
 };
 
 module.exports = roleController;
