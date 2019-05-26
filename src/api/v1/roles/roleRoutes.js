@@ -13,4 +13,9 @@ roleRouter
   .get(roleController.getAllRoles)
   .post(roleController.createRole);
 
+roleRouter
+  .route("/:id")
+  .get(roleController.getRole)
+  .put()
+  .delete();
 module.exports = roleRouter;

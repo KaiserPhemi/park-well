@@ -13,6 +13,19 @@ const validateData = {
       description: joi.string().required()
     };
     return joi.validate(body, roleSchema);
+  },
+
+  /**
+   * @author oluwafemi akinwa
+   * @desc validates id passed as params
+   * @param {integer} id
+   */
+  checkIdParams(id) {
+    const idSchema = joi
+      .number()
+      .integer()
+      .required();
+    return joi.validate(id, idSchema);
   }
 };
 
