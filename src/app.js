@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 app.disable("x-powered-by");
 
 // routes
-// app.use("/api/v1", appRouter);
+app.use("/api/v1", appRouter);
 app.get("/", (req, res) => {
   res.status(200).send({ message: "Welcome to the park-well API" });
 });
