@@ -29,7 +29,7 @@ module.exports = {
       phoneNumber: {
         allowNull: false,
         length: 15,
-        type: Sequelize.CHAR,
+        type: Sequelize.STRING,
         validate: { notEmpty: true, isNumeric: true }
       },
       email: {

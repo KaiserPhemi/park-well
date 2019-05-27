@@ -4,7 +4,7 @@ const db = require("../../../../models");
 // utils
 const validateData = require("../../../utils/validateData");
 
-// controllers
+// controller
 const roleController = {
   /**
    * @author oluwafemi akinwa
@@ -15,13 +15,13 @@ const roleController = {
   getAllRoles(req, res) {
     db.Role.findAll()
       .then(roles => {
-        res.status(200).send({
+        return res.status(200).send({
           message: "You have successfully retrieved all roles.",
           roles
         });
       })
       .catch(err => {
-        res.status(500).send({
+        return res.status(500).send({
           message: "An error has occurred",
           err
         });
@@ -104,7 +104,7 @@ const roleController = {
       db.Role.update(req.body, { where: { id }, returning: true })
         .then(updatedRole => {
           return res.status(200).send({
-            message: "Role updated successfully.",
+            message: "Role details updated successfully.",
             updatedRole
           });
         })
