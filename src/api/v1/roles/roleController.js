@@ -4,7 +4,7 @@ const db = require("../../../../models");
 // utils
 const validateData = require("../../../utils/validateData");
 
-// controllers
+// controller
 const roleController = {
   /**
    * @author oluwafemi akinwa

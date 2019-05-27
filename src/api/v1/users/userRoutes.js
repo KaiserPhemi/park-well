@@ -17,6 +17,6 @@ userRouter
   .route("/:id")
   .get(userController.getUser)
   .put(userController.updateUser)
-  .delete();
+  .delete(userController.deleteUser);
 
 module.exports = userRouter;

@@ -156,7 +156,43 @@ const userController = {
         });
     });
   },
-  delete(req, res) {}
+
+  /**
+   * @author oluwafemi akinwa
+   * @desc deletes a user
+   * @param {object} req
+   * @param {object} res
+   */
+  deleteUser(req, res) {
+    const { id } = req.params;
+    const validationError = validateData.checkIdParams(id);
+    if (validationError.error) {
+      return res.status(400).send({
+        message: "User id is required & must be an integer",
+        validationError
+      });
+    }
+    db.User.findOne({ where: { id } })
+      .then(user => {
+        if (!user) {
+          return res.status(404).send({
+            message: "User does not exist"
+          });
+        }
+        const deletedUser = filterData.filterUser(user);
+        user.destroy();
+        return res.status(200).send({
+          message: "User deleted successfully",
+          deletedUser
+        });
+      })
+      .catch(err => {
+        return res.status(500).send({
+          message: "An error has occured. User not deleted.",
+          err
+        });
+      });
+  }
 };
 
 module.exports = userController;
