@@ -46,6 +46,7 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Car.associate = function(models) {
+    Car.hasMany(models.ParkingActivity, { foreignKey: "carRegNo" });
     Car.belongsTo(models.User, {
       foreignKey: "ownerEmail",
       onDelete: "SET NULL"

@@ -32,7 +32,18 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   ParkingActivity.associate = models => {
-    // associations can be defined here
+    ParkingActivity.belongsTo(models.User, {
+      foreignKey: "ownerEmail",
+      onDelete: "SET NULL"
+    });
+    ParkingActivity.belongsTo(models.ParkingSpace, {
+      foreignKey: "parkingSpaceTitle",
+      onDelete: "SET NULL"
+    });
+    ParkingActivity.belongsTo(models.Car, {
+      foreignKey: "carRegNo",
+      onDelete: "SET NULL"
+    });
   };
   return ParkingActivity;
 };

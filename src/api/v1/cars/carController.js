@@ -29,6 +29,7 @@ const carController = {
   },
 
   /**
+   * @author oluwafemi akinwa
    * @desc retrieves details of a car
    * @param {object} req
    * @param {object} res
