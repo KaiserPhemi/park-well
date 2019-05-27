@@ -144,6 +144,29 @@ const validateData = {
     };
 
     return joi.validate(data, spaceSchema);
+  },
+
+  /**
+   * @desc validates data to create an activity
+   * @param {object} data
+   */
+  checkActivityData(data) {
+    const activitySchema = {
+      note: joi.string(),
+      carRegNo: joi
+        .string()
+        .max(12)
+        .required(),
+      ownerEmail: joi
+        .string()
+        .email()
+        .required(),
+      parkingSpaceTitle: joi
+        .string()
+        .max(20)
+        .required()
+    };
+    return joi.validate(data, activitySchema);
   }
 };
 
