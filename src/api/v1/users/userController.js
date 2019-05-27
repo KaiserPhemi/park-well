@@ -3,7 +3,6 @@ const db = require("../../../../models");
 
 // utils
 const validateData = require("../../../utils/validateData");
-const encrypt = require("../../../utils/encrypt");
 const filterData = require("../../../utils/filterData");
 
 const userController = {
