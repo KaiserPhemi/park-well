@@ -8,6 +8,15 @@ const carController = require("./carController");
 const carRouter = express.Router();
 
 // routes
-carRouter.route("/").get(carController.getAllCars);
+carRouter
+  .route("/")
+  .get(carController.getAllCars)
+  .post(carController.registerCar);
+
+carRouter
+  .route("/:id")
+  .get(carController.getCar)
+  .put()
+  .delete();
 
 module.exports = carRouter;

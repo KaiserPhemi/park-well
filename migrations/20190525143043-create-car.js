@@ -34,13 +34,13 @@ module.exports = {
         defaultValue: false,
         type: Sequelize.BOOLEAN
       },
-      ownerId: {
+      ownerEmail: {
         allowNull: false,
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         onDelete: "SET NULL",
         references: {
           model: "Users",
-          key: "id"
+          key: "email"
         }
       },
       createdAt: {
