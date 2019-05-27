@@ -55,7 +55,7 @@ const userController = {
             .then(user => {
               return res.status(201).send({
                 message: "User created successfully",
-                createdUser: filterData.filterUser(user)
+                user: filterData.filterUser(user)
               });
             })
             .catch(err => {
@@ -72,7 +72,91 @@ const userController = {
           err
         });
       });
-  }
+  },
+
+  /**
+   * @author oluwafemi akinwa
+   * @desc retrieves a single user
+   * @param {object} req
+   * @param {object} res
+   */
+  getUser(req, res) {
+    const { id } = req.params;
+    const error = validateData.checkIdParams(id);
+    if (error.error) {
+      return res.status(400).send({
+        message: "User id is required & must be an integer",
+        error
+      });
+    }
+    db.User.findOne({ where: { id } })
+      .then(user => {
+        if (!user) {
+          return res.status(404).send({
+            message: `User with id: '${id}' does not exist`
+          });
+        }
+        return res.status(200).send({
+          message: "User retrieved successfully.",
+          user: filterData.filterUser(user)
+        });
+      })
+      .catch(err => {
+        return res.status(500);
+        send({
+          message: "An internal error has occured.",
+          err
+        });
+      });
+  },
+
+  /**
+   * @author oluwafemi akinwa
+   * @desc updates user details
+   * @param {object} req
+   * @param {object} res
+   */
+  updateUser(req, res) {
+    const { id } = req.params;
+    const error = validateData.checkIdParams(id);
+    if (error.error) {
+      return res.status(400).send({
+        message: "User id is required & must be an integer",
+        error
+      });
+    }
+    db.User.findOne({ where: { id } }).then(user => {
+      if (!user) {
+        return res.status(404).send({
+          message: `User with id: '${id}' does not exist.`
+        });
+      }
+      let userData;
+      if (req.body.password) {
+        userData = filterData.encryptPassword(req.body);
+      } else {
+        userData = req.body;
+      }
+      db.User.update(userData, {
+        where: { id },
+        returning: true
+      })
+        .then(user => {
+          const updatedUser = user[1][0].dataValues; // extract only the user object
+          return res.status(200).send({
+            message: "User details updated successfully.",
+            user: filterData.filterUser(updatedUser)
+          });
+        })
+        .catch(err => {
+          return res.status(500).send({
+            message: "An error has occurred.",
+            err
+          });
+        });
+    });
+  },
+  delete(req, res) {}
 };
 
 module.exports = userController;

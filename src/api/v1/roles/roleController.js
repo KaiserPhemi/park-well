@@ -104,7 +104,7 @@ const roleController = {
       db.Role.update(req.body, { where: { id }, returning: true })
         .then(updatedRole => {
           return res.status(200).send({
-            message: "Role updated successfully.",
+            message: "Role details updated successfully.",
             updatedRole
           });
         })
