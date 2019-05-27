@@ -55,7 +55,7 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   User.associate = function(models) {
-    User.hasMany(models.Car, { foreignKey: "ownerId" });
+    User.hasMany(models.Car, { foreignKey: "ownerEmail" });
     User.belongsTo(models.Role, {
       foreignKey: "roleId",
       onDelete: "SET NULL"
