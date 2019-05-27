@@ -77,6 +77,53 @@ const validateData = {
         .required()
     };
     return joi.validate(data, loginSchema);
+  },
+
+  /**
+   * @desc validates input data for car
+   * @param {object} data
+   */
+  checkCarData(data) {
+    const carSchema = {
+      regNo: joi
+        .string()
+        .max(12)
+        .required(),
+      brand: joi
+        .string()
+        .max(30)
+        .required(),
+      model: joi
+        .string()
+        .max(30)
+        .required(),
+      color: joi
+        .string()
+        .max(20)
+        .required(),
+      parked: joi.any().valid([false, true]),
+      ownerEmail: joi
+        .string()
+        .email()
+        .required()
+    };
+    return joi.validate(data, carSchema);
+  },
+
+  /**
+   * @desc validates update data for updating car details
+   * @param {object} data
+   */
+  checkCarUpdateData(data) {
+    const carSchema = {
+      regNo: joi.string().max(12),
+      brand: joi.string().max(30),
+      model: joi.string().max(30),
+      color: joi.string().max(20),
+      parked: joi.any().valid([false, true]),
+      ownerEmail: joi.string().email()
+    };
+    return joi.validate(data, carSchema);
   }
 };
 

@@ -16,7 +16,7 @@ carRouter
 carRouter
   .route("/:id")
   .get(carController.getCar)
-  .put()
-  .delete();
+  .put(carController.updateCarDetails)
+  .delete(carController.deleteCar);
 
 module.exports = carRouter;
