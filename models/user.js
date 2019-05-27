@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
         validate: { notEmpty: true }
       },
       phoneNumber: {
-        type: DataTypes.CHAR,
+        type: DataTypes.STRING,
         allowNull: false,
         unique: true,
         length: 15,

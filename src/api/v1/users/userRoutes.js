@@ -8,6 +8,9 @@ const userRouter = express.Router();
 const userController = require("./userController");
 
 // routes
-userRouter.route("/").get(userController.getAllUsers);
+userRouter
+  .route("/")
+  .get(userController.getAllUsers)
+  .post(userController.createUser);
 
 module.exports = userRouter;

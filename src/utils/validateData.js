@@ -52,8 +52,7 @@ const validateData = {
         .min(8)
         .required(),
       phoneNumber: joi
-        .number()
-        .integer()
+        .string()
         .max(15)
         .required(),
       department: joi.string().required(),
