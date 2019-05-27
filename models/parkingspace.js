@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
   );
   ParkingSpace.associate = models => {
     ParkingSpace.belongsTo(models.Car, {
-      foreignKey: "regNo",
+      foreignKey: "carRegNo",
       onDelete: "SET NULL"
     });
   };
