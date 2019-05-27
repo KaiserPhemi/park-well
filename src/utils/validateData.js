@@ -59,6 +59,24 @@ const validateData = {
       roleId: joi.number().integer()
     };
     return joi.validate(data, userSchema);
+  },
+
+  /**
+   * @desc validates the supplied login details
+   * @param {object} data
+   */
+  checkLoginData(data) {
+    const loginSchema = {
+      email: joi
+        .string()
+        .email()
+        .required(),
+      password: joi
+        .string()
+        .min(8)
+        .required()
+    };
+    return joi.validate(data, loginSchema);
   }
 };
 

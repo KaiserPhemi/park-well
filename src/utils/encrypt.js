@@ -9,8 +9,22 @@ const SALT_ROUNDS = 10;
  * @desc encrypts incoming string
  * @param {string} data
  */
-const encrypt = data => {
-  return bcrypt.hashSync(data, SALT_ROUNDS);
-};
+const encrypt = {
+  /**
+   * @desc encrypts the password
+   * @param {string} data
+   */
+  encryptPassword(data) {
+    return bcrypt.hashSync(data, SALT_ROUNDS);
+  },
 
+  /**
+   * @desc compares password supplied with what is in the database
+   * @param {string} data
+   * @param {string} hash
+   */
+  comparePassword(data, hash) {
+    return bcrypt.compareSync(data, hash);
+  }
+};
 module.exports = encrypt;
