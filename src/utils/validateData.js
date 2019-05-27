@@ -124,6 +124,26 @@ const validateData = {
       ownerEmail: joi.string().email()
     };
     return joi.validate(data, carSchema);
+  },
+
+  /**
+   * @desc validates data to register a parking space
+   * @param {object} data
+   */
+  checkParkingSpaceData(data) {
+    const spaceSchema = {
+      title: joi
+        .string()
+        .max(20)
+        .required(),
+      description: joi
+        .string()
+        .max(100)
+        .required(),
+      vacant: joi.any().valid([false, true])
+    };
+
+    return joi.validate(data, spaceSchema);
   }
 };
 
