@@ -19,21 +19,13 @@ module.exports = (sequelize, DataTypes) => {
       vacant: {
         type: DataTypes.BOOLEAN,
         defaultValue: true
-      },
-      carRegNo: {
-        allowNull: false,
-        type: DataTypes.STRING,
-        length: 12,
-        unique: true,
-        validate: { notEmpty: true }
       }
     },
     {}
   );
   ParkingSpace.associate = models => {
-    ParkingSpace.belongsTo(models.Car, {
-      foreignKey: "carRegNo",
-      onDelete: "SET NULL"
+    ParkingSpace.hasMany(models.ParkingActivity, {
+      foreignKey: "parkingSpaceTitle"
     });
   };
   return ParkingSpace;
