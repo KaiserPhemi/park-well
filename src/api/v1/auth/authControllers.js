@@ -4,6 +4,7 @@ const db = require("../../../../models");
 // utils
 const validateData = require("../../../utils/validateData");
 const filterData = require("../../../utils/filterData");
+const encrypt = require("../../../utils/encrypt");
 
 // middlewares
 const auth = require("../../../middlewares/auth");
@@ -31,17 +32,20 @@ const authController = {
             message: `User with email: ${email} does not exist.`
           });
         }
-        if (user && encrypt.comparePassword(req.password, user.password)) {
-          const generatedToken = auth.createToken(user);
+        const { password, id, roleId } = user;
+        if (user && encrypt.comparePassword(req.body.password, password)) {
+          const generatedToken = auth.createToken(id, roleId);
           const loggedInUser = filterData.filterUser(user);
-          return res.status(200).send({
-            message: "User logged in successfully",
-            loggedInUser,
-            generatedToken
-          });
+          return res
+            .status(200)
+            .header("auth-token", generatedToken)
+            .send({
+              message: "User logged in successfully",
+              loggedInUser
+            });
         }
         return res.status(404).send({
-          message: "Incorrect login credentials.Please try again."
+          message: "Incorrect login credentials. Please try again."
         });
       })
       .catch(err => {
@@ -51,7 +55,13 @@ const authController = {
         });
       });
   },
-  logout() {}
+
+  /**
+   * @desc log users out of the app
+   * @param {object} req
+   * @param {object} res
+   */
+  logout(req, res) {}
 };
 
 module.exports = authController;
