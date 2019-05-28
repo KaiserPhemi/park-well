@@ -1,12 +1,14 @@
 // third-party libraries
 const express = require("express");
 
-// router
-const userRouter = express.Router();
+// middleware
+const auth = require("../../../middlewares/auth");
 
 // controller
 const userController = require("./userController");
-const auth = require("../../../middlewares/auth");
+
+// router
+const userRouter = express.Router();
 
 // routes
 userRouter
