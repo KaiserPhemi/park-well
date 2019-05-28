@@ -61,7 +61,14 @@ const authController = {
    * @param {object} req
    * @param {object} res
    */
-  logout(req, res) {}
+  logout(req, res) {
+    return res
+      .status(200)
+      .header("auth-token", null)
+      .send({
+        message: "User logged out successfully."
+      });
+  }
 };
 
 module.exports = authController;
