@@ -6,17 +6,18 @@ const userRouter = express.Router();
 
 // controller
 const userController = require("./userController");
+const auth = require("../../../middlewares/auth");
 
 // routes
 userRouter
   .route("/")
-  .get(userController.getAllUsers)
-  .post(userController.createUser);
+  .get(auth.verifyToken, userController.getAllUsers)
+  .post(auth.verifyToken, userController.createUser);
 
 userRouter
   .route("/:id")
-  .get(userController.getUser)
-  .put(userController.updateUser)
-  .delete(userController.deleteUser);
+  .get(auth.verifyToken, userController.getUser)
+  .put(auth.verifyToken, userController.updateUser)
+  .delete(auth.verifyToken, userController.deleteUser);
 
 module.exports = userRouter;

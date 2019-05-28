@@ -37,13 +37,28 @@ const auth = {
         message: "Access denied. Please login."
       });
     }
-    try {
-      const verified = jwt.verify(token, process.env.TOKEN_SECRET);
-    } catch {
-      return res.status(400).send({
-        message: "Invalid token"
-      });
-    }
+    jwt.verify(token, process.env.TOKEN_SECRET, (err, decoded) => {
+      if (err) {
+        return res.status(401).send({
+          message: "Invalid token"
+        });
+      }
+      db.User.findOne({ where: { id: decoded.id } })
+        .then(user => {
+          if (!user) {
+            return res.status(404).send({
+              message: "Account does not exist."
+            });
+          }
+          next();
+        })
+        .catch(err => {
+          return res.status(500).send({
+            message: "Internal error occurred.",
+            err
+          });
+        });
+    });
   }
 };
 
