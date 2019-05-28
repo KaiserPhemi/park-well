@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "test": "NODE_ENV=testing mocha --timeout 10000 src/**/**/*.test.js --exit",
+    "test": "NODE_ENV=test nyc --reporter=text-lcov mocha --timeout 10000 src/**/**/*.test.js --exit | coveralls",
+    "test:dev": "NODE_ENV=test nyc mocha --verbose --timeout 10000 src/**/**/*.test.js --watch",
     "migrate": "sequelize db:migrate"
   },
   "repository": "https://github.com/KaiserPhemi/park-well.git",
@@ -25,7 +26,10 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
+    "coveralls": "^3.0.3",
     "mocha": "^6.1.4",
+    "mocha-lcov-reporter": "^1.3.0",
+    "nyc": "^14.1.1",
     "supertest": "^4.0.2"
   }
 }
