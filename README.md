@@ -1,6 +1,7 @@
 # park-well
 
 [![Coverage Status](https://coveralls.io/repos/github/KaiserPhemi/park-well/badge.svg?branch=master)](https://coveralls.io/github/KaiserPhemi/park-well?branch=master)
+[![CircleCI](https://circleci.com/gh/KaiserPhemi/park-well.svg?style=svg)](https://circleci.com/gh/KaiserPhemi/park-well)
 
 ## About
 
