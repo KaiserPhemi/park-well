@@ -59,6 +59,114 @@ const validateData = {
       roleId: joi.number().integer()
     };
     return joi.validate(data, userSchema);
+  },
+
+  /**
+   * @desc validates the supplied login details
+   * @param {object} data
+   */
+  checkLoginData(data) {
+    const loginSchema = {
+      email: joi
+        .string()
+        .email()
+        .required(),
+      password: joi
+        .string()
+        .min(8)
+        .required()
+    };
+    return joi.validate(data, loginSchema);
+  },
+
+  /**
+   * @desc validates input data for car
+   * @param {object} data
+   */
+  checkCarData(data) {
+    const carSchema = {
+      regNo: joi
+        .string()
+        .max(12)
+        .required(),
+      brand: joi
+        .string()
+        .max(30)
+        .required(),
+      model: joi
+        .string()
+        .max(30)
+        .required(),
+      color: joi
+        .string()
+        .max(20)
+        .required(),
+      parked: joi.any().valid([false, true]),
+      ownerEmail: joi
+        .string()
+        .email()
+        .required()
+    };
+    return joi.validate(data, carSchema);
+  },
+
+  /**
+   * @desc validates update data for updating car details
+   * @param {object} data
+   */
+  checkCarUpdateData(data) {
+    const carSchema = {
+      regNo: joi.string().max(12),
+      brand: joi.string().max(30),
+      model: joi.string().max(30),
+      color: joi.string().max(20),
+      parked: joi.any().valid([false, true]),
+      ownerEmail: joi.string().email()
+    };
+    return joi.validate(data, carSchema);
+  },
+
+  /**
+   * @desc validates data to register a parking space
+   * @param {object} data
+   */
+  checkParkingSpaceData(data) {
+    const spaceSchema = {
+      title: joi
+        .string()
+        .max(20)
+        .required(),
+      description: joi
+        .string()
+        .max(100)
+        .required(),
+      vacant: joi.any().valid([false, true])
+    };
+
+    return joi.validate(data, spaceSchema);
+  },
+
+  /**
+   * @desc validates data to create an activity
+   * @param {object} data
+   */
+  checkActivityData(data) {
+    const activitySchema = {
+      note: joi.string(),
+      carRegNo: joi
+        .string()
+        .max(12)
+        .required(),
+      ownerEmail: joi
+        .string()
+        .email()
+        .required(),
+      parkingSpaceTitle: joi
+        .string()
+        .max(20)
+        .required()
+    };
+    return joi.validate(data, activitySchema);
   }
 };
 

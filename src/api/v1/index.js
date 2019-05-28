@@ -4,14 +4,20 @@ const express = require("express");
 // routers
 const roleRouter = require("./roles/roleRoutes");
 const userRouter = require("./users/userRoutes");
+const authRouter = require("./auth/authRoutes");
+const carRouter = require("./cars/carRoutes");
+const parkingSpaceRouter = require("./parkingSpaces/parkingSpaceRoutes");
+const activityRouter = require("./parkingActivities/activityRoutes");
 
 // main app router
 const appRouter = express.Router();
 
-// routes
-
 // mount routes
 appRouter.use("/users", userRouter);
 appRouter.use("/roles", roleRouter);
+appRouter.use("/auth", authRouter);
+appRouter.use("/cars", carRouter);
+appRouter.use("/spaces", parkingSpaceRouter);
+appRouter.use("/activities", activityRouter);
 
 module.exports = appRouter;

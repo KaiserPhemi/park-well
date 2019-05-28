@@ -33,18 +33,22 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.BOOLEAN,
         defaultValue: false
       },
-      ownerId: {
-        type: DataTypes.INTEGER,
+      ownerEmail: {
+        type: DataTypes.STRING,
         allowNull: false,
         unique: true,
-        validate: { notEmpty: true }
+        validate: {
+          isEmail: true,
+          notEmpty: true
+        }
       }
     },
     {}
   );
   Car.associate = function(models) {
+    Car.hasMany(models.ParkingActivity, { foreignKey: "carRegNo" });
     Car.belongsTo(models.User, {
-      foreignKey: "ownerId",
+      foreignKey: "ownerEmail",
       onDelete: "SET NULL"
     });
   };

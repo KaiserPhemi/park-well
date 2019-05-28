@@ -21,15 +21,8 @@ module.exports = {
       },
       vacant: {
         allowNull: false,
+        defaultValue: true,
         type: Sequelize.BOOLEAN
-      },
-      carRegNo: {
-        type: Sequelize.STRING,
-        onDelete: "SET NULL",
-        references: {
-          model: "Cars",
-          key: "regNo"
-        }
       },
       createdAt: {
         allowNull: false,
