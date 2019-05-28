@@ -10,4 +10,6 @@ const app = require("../../../../app");
 const http = supertest.agent(app);
 
 // suites
-describe("Car API", () => {});
+describe("Car API", () => {
+  before(done => {});
+});

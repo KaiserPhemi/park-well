@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "test": "NODE_ENV=test nyc --reporter=text-lcov mocha --timeout 10000 src/**/**/*.test.js --exit | coveralls",
-    "test:dev": "NODE_ENV=test mocha --verbose --timeout 10000 src/**/**/*.test.js",
-    "migrate": "sequelize db:migrate"
+    "test": "NODE_ENV=test nyc --reporter=text-lcov mocha --verbose --timeout 10000 src/**/**/*.test.js | coveralls",
+    "test:dev": "NODE_ENV=test nyc mocha --verbose --timeout 10000 src/**/**/*test.js models/**/*.test.js",
+    "migrate": "sequelize db:migrate",
+    "migrate:test": "NODE_ENV=test sequelize db:migrate",
+    "seed": "NODE_ENV=test sequelize db:seed:all"
   },
   "repository": "https://github.com/KaiserPhemi/park-well.git",
   "author": "KaiserPhemi <oluwafemi.akinwa@andela.com>",
