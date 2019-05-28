@@ -4,19 +4,22 @@ const express = require("express");
 // controllers
 const carController = require("./carController");
 
+// middleswares
+const auth = require("../../../middlewares/auth");
+
 // router
 const carRouter = express.Router();
 
 // routes
 carRouter
   .route("/")
-  .get(carController.getAllCars)
-  .post(carController.registerCar);
+  .get(auth.verifyToken, carController.getAllCars)
+  .post(auth.verifyToken, carController.registerCar);
 
 carRouter
   .route("/:id")
-  .get(carController.getCar)
-  .put(carController.updateCarDetails)
-  .delete(carController.deleteCar);
+  .get(auth.verifyToken, carController.getCar)
+  .put(auth.verifyToken, carController.updateCarDetails)
+  .delete(auth.verifyToken, carController.deleteCar);
 
 module.exports = carRouter;

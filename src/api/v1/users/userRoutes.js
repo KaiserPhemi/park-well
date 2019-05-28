@@ -1,22 +1,25 @@
 // third-party libraries
 const express = require("express");
 
-// router
-const userRouter = express.Router();
+// middleware
+const auth = require("../../../middlewares/auth");
 
 // controller
 const userController = require("./userController");
 
+// router
+const userRouter = express.Router();
+
 // routes
 userRouter
   .route("/")
-  .get(userController.getAllUsers)
-  .post(userController.createUser);
+  .get(auth.verifyToken, userController.getAllUsers)
+  .post(auth.verifyToken, userController.createUser);
 
 userRouter
   .route("/:id")
-  .get(userController.getUser)
-  .put(userController.updateUser)
-  .delete(userController.deleteUser);
+  .get(auth.verifyToken, userController.getUser)
+  .put(auth.verifyToken, userController.updateUser)
+  .delete(auth.verifyToken, userController.deleteUser);
 
 module.exports = userRouter;
