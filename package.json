@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon index.js",
     "test": "NODE_ENV=test nyc --reporter=text-lcov mocha --timeout 10000 src/**/**/*.test.js --exit | coveralls",
-    "test:dev": "NODE_ENV=test nyc mocha --verbose --timeout 10000 src/**/**/*.test.js --watch",
+    "test:dev": "NODE_ENV=test mocha --verbose --timeout 10000 src/**/**/*.test.js",
     "migrate": "sequelize db:migrate"
   },
   "repository": "https://github.com/KaiserPhemi/park-well.git",
