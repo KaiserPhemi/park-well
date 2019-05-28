@@ -57,6 +57,7 @@ const authController = {
   },
 
   /**
+   * @author oluwafemi akinwa
    * @desc log users out of the app
    * @param {object} req
    * @param {object} res
