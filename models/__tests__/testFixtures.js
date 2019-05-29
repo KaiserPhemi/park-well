@@ -14,6 +14,15 @@ const testFixtures = {
     color: "grey",
     ownerEmail: "skodo@gmail.com"
   },
+  adminUser: {
+    firstName: "Geras",
+    lastName: "Kronika",
+    email: "geras@gmail.com",
+    department: "Engineering",
+    phoneNumber: "09033445247",
+    roleTitle: "admin",
+    password: "oluwafemi"
+  },
   anotherCar: {
     regNo: "316-COLD",
     brand: "BMW",

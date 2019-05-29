@@ -27,7 +27,7 @@ module.exports = {
           email: "geras@gmail.com",
           department: "Engineering",
           phoneNumber: "09033445247",
-          roleTitle: "default",
+          roleTitle: "admin",
           password: bcrypt.hashSync("oluwafemi", salting),
           createdAt: new Date(),
           updatedAt: new Date()

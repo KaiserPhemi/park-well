@@ -8,16 +8,15 @@ dotenv.config();
 const db = require("../index");
 
 // fixtures
-const { newCar, newUser, lostCar, anotherCar } = require("./testFixtures");
+const { newCar, newUser, lostCar } = require("./testFixtures");
 
 // test suites
 describe("Car Model", () => {
   let registeredCar;
   before(done => {
     db.User.destroy({ where: {} });
-    db.User.create(newUser).then(() => {
-      done();
-    });
+    db.User.create(newUser);
+    done();
   });
   after(done => {
     db.Car.destroy({ where: {} });
@@ -52,11 +51,8 @@ describe("Car Model", () => {
   });
 
   describe("UPDATE", () => {
-    beforeEach(() => {
-      db.Car.create(anotherCar);
-    });
     it("should update car details", done => {
-      db.Car.findOne({ where: { regNo: anotherCar.regNo } }).then(car => {
+      db.Car.findOne({ where: { regNo: newCar.regNo } }).then(car => {
         car.update({ parked: true }).then(car => {
           const updatedCar = car.dataValues;
           expect(updatedCar).to.have.property("parked");
