@@ -13,6 +13,19 @@ const testFixtures = {
     model: "X5",
     color: "grey",
     ownerEmail: "skodo@gmail.com"
+  },
+  anotherCar: {
+    regNo: "316-COLD",
+    brand: "BMW",
+    model: "X5",
+    color: "grey",
+    ownerEmail: "skodo@gmail.com"
+  },
+  lostCar: {
+    regNo: "IXY-38",
+    brand: "BMW",
+    model: "X5",
+    color: "black"
   }
 };
 

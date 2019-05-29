@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "test": "NODE_ENV=test nyc --reporter=text-lcov mocha --verbose --timeout 10000 src/**/**/*.test.js | coveralls",
-    "test:dev": "NODE_ENV=test nyc mocha --verbose --timeout 10000 src/**/**/*test.js models/**/*.test.js",
+    "test": "NODE_ENV=test nyc --reporter=text-lcov mocha --timeout 10000 src/**/**/*.test.js | coveralls",
+    "test:dev": "NODE_ENV=test nyc mocha --timeout 10000 src/**/**/*test.js models/**/*.test.js --watch",
     "migrate": "sequelize db:migrate",
     "migrate:test": "NODE_ENV=test sequelize db:migrate",
     "seed": "NODE_ENV=test sequelize db:seed:all"
