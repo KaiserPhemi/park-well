@@ -95,7 +95,22 @@ describe("User API", () => {
   // deletes a user
   describe("/DELETE", () => {
     it("should delete a user record", done => {
-      done();
+      http
+        .post(`${baseUrl}/auth/login`)
+        .send({ email: createdUser.email, password: myUser.password })
+        .end((err, res) => {
+          userToken = res.headers["auth-token"];
+          http
+            .delete(`${baseUrl}/users/${createdUser.id}`)
+            .set({ "auth-token": userToken })
+            .expect(200)
+            .expect("Content-Type", /json/)
+            .end((err, res) => {
+              expect(res.body).to.be.an("object");
+              expect(res.body.message).to.equal("User deleted successfully");
+              done();
+            });
+        });
     });
   });
 });
