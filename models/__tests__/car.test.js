@@ -14,13 +14,15 @@ const { newCar, newUser, lostCar } = require("./testFixtures");
 describe("Car Model", () => {
   let registeredCar;
   before(done => {
-    db.User.destroy({ where: {} });
-    db.User.create(newUser);
-    done();
+    db.User.create(newUser).then(() => {
+      done();
+    });
   });
   after(done => {
     db.Car.destroy({ where: {} });
-    done();
+    db.User.destroy({ where: {} }).then(() => {
+      done();
+    });
   });
 
   describe("CREATE", () => {

@@ -6,8 +6,8 @@
   "scripts": {
     "start": "nodemon index.js",
     "test": "yarn clean && yarn test:cover",
-    "test:cover": "NODE_ENV=test nyc --reporter=text-lcov mocha --config .mocharc.js src/**/**/*.test.js | coveralls",
-    "test:dev": "yarn clean && NODE_ENV=test nyc mocha --config .mocharc.js models/**/*.test.js src/**/**/*test.js",
+    "test:cover": "NODE_ENV=test nyc --reporter=text-lcov mocha --config .mocharc.js src/**/**/*.test.js models/**/*.test.js | coveralls",
+    "test:dev": "yarn clean && NODE_ENV=test nyc mocha --config .mocharc.js models/**/*.test.js src/**/**/*test.js --watch",
     "migrate:db": "NODE_ENV=test sequelize db:migrate",
     "drop:db": "NODE_ENV=test psql -c 'drop database if exists park_well_test;' -U oluwafemiakinwa",
     "create:db": "NODE_ENV=test psql -c 'create database park_well_test;' -U oluwafemiakinwa",

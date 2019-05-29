@@ -1,8 +1,8 @@
 const testFixtures = {
   newUser: {
-    firstName: "Maximuf",
-    lastName: "Skodo",
-    email: "skodo@gmail.com",
+    firstName: "Audax",
+    lastName: "Chaley",
+    email: "chaley@gmail.com",
     department: "Engineering",
     phoneNumber: "09033445241",
     password: "oluwafemi"
@@ -12,7 +12,7 @@ const testFixtures = {
     brand: "BMW",
     model: "X5",
     color: "grey",
-    ownerEmail: "skodo@gmail.com"
+    ownerEmail: "chaley@gmail.com"
   },
   adminUser: {
     firstName: "Geras",
@@ -28,7 +28,7 @@ const testFixtures = {
     brand: "BMW",
     model: "X5",
     color: "grey",
-    ownerEmail: "skodo@gmail.com"
+    ownerEmail: "chaley@gmail.com"
   },
   lostCar: {
     regNo: "IXY-38",
