@@ -17,7 +17,7 @@ API for a Parking application that manages parking spaces.
 
 ## API
 
-- [API Documentation]()
+- [API Documentation](https://app.swaggerhub.com/apis-docs/andela-oakinwa/park-well-api/1)
 
 ## Features
 

@@ -6,18 +6,25 @@ jobs:
     docker:
       - image: circleci/node:8
       - image: circleci/postgres:10.5
+        environment:
+          POSTGRES_USER: oluwafemiakinwa
+          POSTGRES_PASSWORD: ""
+          DATABASE_URL: "postgresql://oluwafemiakinwa@localhost:5432"
     working_directory: ~/repo
     steps:
       - checkout
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
-
       - run: yarn install
-
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-
+      - run: sudo apt-get update
+      - run: sudo apt-get install postgresql-client-common
+      - run: sudo apt-get install postgresql-client
+      - run: sudo su - postgres
+      - run: sudo service start postgresql
+      - run: sudo service status postgresql
       - run: yarn test

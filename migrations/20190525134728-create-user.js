@@ -45,12 +45,12 @@ module.exports = {
         type: Sequelize.STRING,
         validate: { notEmpty: true }
       },
-      roleId: {
-        type: Sequelize.INTEGER,
+      roleTitle: {
+        type: Sequelize.STRING,
         onDelete: "SET NULL",
         references: {
           model: "Roles",
-          key: "id"
+          key: "title"
         }
       },
       createdAt: {

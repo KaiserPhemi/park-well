@@ -14,7 +14,7 @@ const userRouter = express.Router();
 userRouter
   .route("/")
   .get(auth.verifyToken, userController.getAllUsers)
-  .post(auth.verifyToken, userController.createUser);
+  .post(userController.createUser);
 
 userRouter
   .route("/:id")
