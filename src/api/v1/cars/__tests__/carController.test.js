@@ -4,7 +4,7 @@ const { expect } = require("chai");
 const supertest = require("supertest");
 
 // fixtures
-const { newUser, newCar } = require("./testFixtures");
+const { newUser, newCar } = require("../../../../fixtures/testFixtures");
 
 dotenv.config();
 process.env.NODE_ENV = "test";
