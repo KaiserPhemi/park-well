@@ -37,6 +37,10 @@ const testFixtures = {
     model: "X5",
     color: "white",
     ownerEmail: "phemi@gmail.com"
+  },
+  newSpace: {
+    title: "Sector_007",
+    description: "A part of the lin kuei area"
   }
 };
 

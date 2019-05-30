@@ -42,21 +42,31 @@ describe("ParkingActivity Model", () => {
     });
   });
   after(done => {
-    db.User.destroy({ where: {} });
+    db.ParkingSpace.destroy({ where: {} });
     db.Car.destroy({ where: {} });
-    db.ParkingSpace.destroy({ where: {} }).then(() => {
+    db.User.destroy({ where: {} }).then(() => {
       done();
     });
   });
 
   describe("CREATE", () => {
-    it("should create a new parking activity", done => {
+    it("should register a parking event", done => {
       db.ParkingActivity.create(parkingActivity).then(activity => {
         const parkingDetail = activity.dataValues;
         expect(parkingDetail).to.be.an("object");
-        expect(parkingDetail).to.have.property("createdAt");
+        expect(parkingDetail.carRegNo).to.equal(parkingActivity.carRegNo);
+        expect(parkingDetail.ownerEmail).to.equal(parkingActivity.ownerEmail);
+        expect(parkingDetail.parkingSpaceTitle).to.equal(
+          parkingActivity.parkingSpaceTitle
+        );
         done();
       });
     });
+  });
+
+  describe("UPDATE", () => {
+    // it("should update parking activity details", done => {
+    //   done();
+    // });
   });
 });
