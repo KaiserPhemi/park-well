@@ -15,10 +15,10 @@
     "dialect": "postgres"
   },
   "production": {
-    "username": "oluwafemiakinwa",
+    "username": "jqysmfglhoxypr",
     "password": null,
-    "database": "park_well",
-    "host": "127.0.0.1",
+    "database": "d2ucfv7k7acl21",
+    "host": "ec2-54-75-235-28.eu-west-1.compute.amazonaws.com",
     "dialect": "postgres",
     "logging": false
   }
