@@ -21,6 +21,9 @@
   "repository": "https://github.com/KaiserPhemi/park-well.git",
   "author": "KaiserPhemi <oluwafemi.akinwa@andela.com>",
   "license": "MIT",
+  "engines": {
+    "node": "11.14.0"
+  },
   "dependencies": {
     "@hapi/joi": "^15.0.3",
     "bcrypt": "^3.0.6",
