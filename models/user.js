@@ -44,11 +44,11 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         validate: { notEmpty: true }
       },
-      roleId: {
-        type: DataTypes.UUID,
+      roleTitle: {
+        type: DataTypes.STRING,
         allowNull: false,
         unique: true,
-        defaultValue: 1,
+        defaultValue: "default",
         validate: { notEmpty: true }
       }
     },
@@ -58,7 +58,7 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.Car, { foreignKey: "ownerEmail" });
     User.hasMany(models.ParkingActivity, { foreignKey: "ownerEmail" });
     User.belongsTo(models.Role, {
-      foreignKey: "roleId",
+      foreignKey: "roleTitle",
       onDelete: "SET NULL"
     });
   };

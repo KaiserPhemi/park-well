@@ -51,7 +51,7 @@ const parkingSpaceController = {
         db.ParkingSpace.create(req.body)
           .then(space => {
             return res.status(201).send({
-              message: "Parking space registered",
+              message: "Parking space registered successfully",
               space
             });
           })
