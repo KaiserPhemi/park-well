@@ -15,8 +15,7 @@
     "clean": "yarn drop:db && yarn create:db && yarn migrate:db && yarn seed:db",
     "drop": "psql -c 'drop database if exists park_well;' -U oluwafemiakinwa",
     "migrate": "sequelize db:migrate",
-    "seed": "sequelize db:seed:all",
-    "heroku-postbuild": "NODE_ENV=production yarn drop && NODE_ENV=production yarn migrate && NODE_ENV=production yarn seed"
+    "seed": "sequelize db:seed:all"
   },
   "repository": "https://github.com/KaiserPhemi/park-well.git",
   "author": "KaiserPhemi <oluwafemi.akinwa@andela.com>",

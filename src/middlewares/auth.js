@@ -7,6 +7,9 @@ dotenv.config();
 // models
 const db = require("../../models");
 
+// token list
+const tokenList = require("./tokenList");
+
 const auth = {
   /**
    * @desc generates token for user.
@@ -35,6 +38,11 @@ const auth = {
     if (!token) {
       return res.status(401).send({
         message: "Access denied. Please login."
+      });
+    }
+    if (tokenList.indexOf(token) > 0) {
+      return res.status(401).send({
+        message: "Invalid token. Please login."
       });
     }
     jwt.verify(token, process.env.TOKEN_SECRET, (err, decoded) => {

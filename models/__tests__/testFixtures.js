@@ -17,7 +17,7 @@ const testFixtures = {
   adminUser: {
     firstName: "Geras",
     lastName: "Kronika",
-    email: "geras@gmail.com",
+    email: "kronika@zoho.com",
     department: "Engineering",
     phoneNumber: "09033445247",
     roleTitle: "admin",
@@ -30,11 +30,29 @@ const testFixtures = {
     color: "grey",
     ownerEmail: "chaley@gmail.com"
   },
+  addCar: {
+    regNo: "KGB-KI9",
+    brand: "Audi",
+    model: "X5",
+    color: "white",
+    ownerEmail: "kronika@zoho.com"
+  },
+  space: {
+    title: "Sector_05",
+    description: "A part of the lin kuei area"
+  },
   lostCar: {
     regNo: "IXY-38",
     brand: "BMW",
     model: "X5",
     color: "black"
+  },
+  myCar: {
+    regNo: "AGENT-47",
+    brand: "Audi",
+    model: "TT",
+    color: "blue",
+    ownerEmail: "kronika@zoho.com"
   }
 };
 
