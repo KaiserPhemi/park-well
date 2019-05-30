@@ -73,7 +73,14 @@ describe("Activity API", () => {
         });
     });
   });
-  describe("/GET", () => {});
-  describe("/PUT", () => {});
-  describe("/DELETE", () => {});
+  describe("/GET", () => {
+    it("should retrieve all parking activities", done => {
+      done();
+    });
+  });
+  describe("/PUT", () => {
+    it("should update a parking activity", done => {
+      done();
+    });
+  });
 });
