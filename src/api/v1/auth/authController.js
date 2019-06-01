@@ -1,3 +1,9 @@
+// third-party libraries
+// const jwt = require("jsonwebtoken");
+const dotenv = require("dotenv");
+
+dotenv.config();
+
 // database model
 const db = require("../../../../models");
 
@@ -8,6 +14,7 @@ const encrypt = require("../../../utils/encrypt");
 
 // middlewares
 const auth = require("../../../middlewares/auth");
+const tokenList = require("../../../middlewares/tokenList");
 
 // controller
 const authController = {
@@ -63,6 +70,8 @@ const authController = {
    * @param {object} res
    */
   logout(req, res) {
+    const userToken = req.headers["auth-token"];
+    tokenList.push(userToken);
     return res
       .status(200)
       .header("auth-token", null)
